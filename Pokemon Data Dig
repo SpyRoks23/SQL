@@ -295,3 +295,15 @@ round(avg(sp_atk)) as avg_SpAtk,
 round(avg(sp_def)) as avg_SpDef,
 round(avg(speed)) as avg_Spd
 from pokemon;
+
+Select Count(*),
+    Case
+        When HP > 80 THEN "81 - 100"
+        When HP > 60 THEN "61 - 80"
+        When HP > 40 THEN "41 - 60"
+        When HP > 20 THEN "21 - 40"
+        When hp > 0 THEN "0 - 20"
+        ELSE "100+"
+    END as hp_range 
+from pokemon group by hp_range;
+
