@@ -1,4 +1,4 @@
-/* Put your data in here and query it! */
+-- SQL Project Data Dig from Khan Academy. Database copied from (PamelaFox / pokemon.sql).  
 
 CREATE TABLE pokemon(
   Number     INTEGER,
@@ -287,6 +287,9 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (249,'Lugia','Psychic','Flying',680,106,90,130,90,154,110,2,'True');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (250,'Ho-oh','Fire','Flying',680,106,130,90,110,154,90,2,'True');
 
+
+-- Display shows: What is the average stats across all pokemon in the database?
+
 Select round(avg(hp)) as avg_hp,
 round(avg(attack)) as avg_atk,
 round(avg(defense)) as avg_def,
@@ -295,6 +298,7 @@ round(avg(sp_def)) as avg_SpDef,
 round(avg(speed)) as avg_Spd
 from pokemon;
 
+--Display shows: How many pokemon are in certain Hp ranges?
 Select Count(*),
     Case
         When HP > 80 THEN "81 - 100"
@@ -305,11 +309,16 @@ Select Count(*),
         ELSE "100+"
     END as hp_range 
 from pokemon group by hp_range;
-    
+
+--Display shows: Find a water pokemon with speed > 85 OR Sp_Atk > 90.    
 Select name, speed, sp_atk from pokemon 
 where type_1 = "Water" and speed > 85 
 or type_1 = "Water" and Sp_Atk >90
 order by name;
+
+--Display shows: Which pokemon type has a higher average than the database's average? 
+Select type_1, round(avg(hp)) as avg_hp from pokemon
+group by type_1 having avg_hp > 68;
 
 
 
