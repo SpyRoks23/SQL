@@ -306,9 +306,10 @@ Select Count(*),
     END as hp_range 
 from pokemon group by hp_range;
     
-Select name from pokemon 
+Select name, speed, sp_atk from pokemon 
 where type_1 = "Water" and speed > 85 
-or type_1 = "Water" and Sp_Atk >90;
+or type_1 = "Water" and Sp_Atk >90
+order by name;
 
 
 
