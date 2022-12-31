@@ -1,0 +1,54 @@
+/* Create table about the people and what they do here */
+
+Create Table Athletes (id Integer, Name Text Primary Key, Team Text, Position Text);
+
+Insert Into Athletes Values (1,"Patrick Mahomes", "Chiefs", "QB");
+Insert Into Athletes Values (2, "Derrick Henry", "Titans", "RB");
+Insert Into Athletes Values (3, "Travis Kelce", "Chiefs", "TE");
+Insert Into Athletes Values (4, "Jeffrey Simmons", "Titans", "DT");
+Insert Into Athletes Values (5, "Cooper Kupp", "Rams", "WR");
+Insert Into Athletes Values (6, "Matthew Stafford", "Rams", "QB");
+Insert Into Athletes Values (7, "Joe Mixon", "Bengals", "RB");
+Insert Into Athletes Values (8, "Joe Burrow", "Bengals", "QB");
+Insert Into Athletes Values (9, "Jerry Jeudy", "Broncos", "WR");
+Insert Into Athletes Values (10, "Russell Wilson", "Broncos", "QB");
+Insert Into Athletes Values (11, "Nick Chubb", "Browns", "RB");
+Insert Into Athletes Values (12, "Amari Cooper", "Browns", "WR");
+Insert Into Athletes Values (13, "Aaron Donald", "Rams", "DT");
+Insert Into Athletes Values (14, "Justin Jefferson", "Vikings", "WR");
+Insert Into Athletes Values (15, "Dallas Goedert", "Eagles", "TE");
+Insert Into Athletes Values (16, "A.J Brown", "Eagles", "WR");
+Insert Into Athletes Values (17, "Jaylen Waddle", "Dolphins", "WR");
+Insert Into Athletes Values (18, "Tyreek Hill", "Dolphins", "WR");
+Insert Into Athletes Values (19, "Tee Higgins", "Bengals", "WR");
+Insert Into Athletes Values (20, "Jeff Wilson", "Dolphins", "RB");
+
+Create Table Teammates (id Integer, Name Text, Team Text, Teammate_1 Text, Teammate_2 Text);
+
+Insert Into Teammates Values (1,"Patrick Mahomes", "Chiefs", "Travis Kelce", NULL);
+Insert Into Teammates Values (2, "Derrick Henry", "Titans", "Jeffrey Simmons", NULL);
+Insert Into Teammates Values (3, "Travis Kelce", "Chiefs", "Patrick Mahomes", NULL);
+Insert Into Teammates Values (4, "Jeffrey Simmons", "Titans", "Derrick Henry", NULL);
+Insert Into Teammates Values (5, "Cooper Kupp", "Rams", "Matthew Stafford", "Aaron Donald");
+Insert Into Teammates Values (6, "Matthew Stafford", "Rams", "Cooper Kupp", "Aaron Donald");
+Insert Into Teammates Values (7, "Joe Mixon", "Bengals", "Joe Burrow", "Tee Higgins");
+Insert Into Teammates Values (8, "Joe Burrow", "Bengals", "Joe Mixon", "Tee Higgins");
+Insert Into Teammates Values (9, "Jerry Jeudy", "Broncos", "Russell Wilson", NULL);
+Insert Into Teammates Values (10, "Russell Wilson", "Broncos", "Jerry Jeudy", NULL);
+Insert Into Teammates Values (11, "Nick Chubb", "Browns", "Amari Cooper", NULL);
+Insert Into Teammates Values (12, "Amari Cooper", "Browns", "Nick Chubb", NULL);
+Insert Into Teammates Values (13, "Aaron Donald", "Rams", "Matthew Stafford", "Cooper Kupp");
+Insert Into Teammates Values (14, "Justin Jefferson", "Vikings", NULL, NULL);
+Insert Into Teammates Values (15, "Dallas Goedert", "Eagles", "A.J Brown", NULL);
+Insert Into Teammates Values (16, "A.J Brown", "Eagles", "Dallas Goedert", NULL);
+Insert Into Teammates Values (17, "Jaylen Waddle", "Dolphins", "Tyreek Hill", "Jeff Wilson");
+Insert Into Teammates Values (18, "Tyreek Hill", "Dolphins", "Jaylen Waddle", "Jeff Wilson");
+Insert Into Teammates Values (19, "Tee Higgins", "Bengals", "Joe Burrow", "Joe Mixon");
+Insert Into Teammates Values (20, "Jeff Wilson", "Dolphins", "Tyreek Hill", "Jaylen Waddle");
+
+
+
+Select * From Athletes
+Order by team;
+
+Select * From Teammates;
