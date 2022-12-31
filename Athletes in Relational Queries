@@ -69,6 +69,12 @@ Insert Into Experience Values (18, "Tyreek Hill", 28, 7);
 Insert Into Experience Values (19, "Tee Higgins", 23, 3);
 Insert Into Experience Values (20, "Jeff Wilson", 27, 5);
 
+--Display shows athlete's name, age, position, and years in the NFL
+Select ath.name, exp.age, ath.position, exp.years_pro 
+From Athletes as ath
+Join experience as exp
+On ath.id = exp.id
+Order by age;
 
 
 Select * From Athletes
