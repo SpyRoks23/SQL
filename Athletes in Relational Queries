@@ -46,6 +46,29 @@ Insert Into Teammates Values (18, "Tyreek Hill", "Dolphins", "Jaylen Waddle", "J
 Insert Into Teammates Values (19, "Tee Higgins", "Bengals", "Joe Burrow", "Joe Mixon");
 Insert Into Teammates Values (20, "Jeff Wilson", "Dolphins", "Tyreek Hill", "Jaylen Waddle");
 
+Create Table Experience (id Integer, Name Text, age Integer, years_pro Integer);
+
+Insert Into Experience Values (1, "Patrick Mahomes", 27, 6);
+Insert Into Experience Values (2, "Derrick Henry", 28, 7);
+Insert Into Experience Values (3, "Travis Kelce", 33, 9);
+Insert Into Experience Values (4, "Jeffrey Simmons", 25, 4);
+Insert Into Experience Values (5, "Cooper Kupp", 29, 6);
+Insert Into Experience Values (6, "Matthew Stafford", 34, 14);
+Insert Into Experience Values (7, "Joe Mixon", 26, 6);
+Insert Into Experience Values (8, "Joe Burrow", 26, 3);
+Insert Into Experience Values (9, "Jerry Jeudy", 23, 3);
+Insert Into Experience Values (10, "Russell Wilson", 34, 11);
+Insert Into Experience Values (11, "Nick Chubb", 27, 5);
+Insert Into Experience Values (12, "Amari Cooper", 28, 8);
+Insert Into Experience Values (13, "Aaron Donald", 31, 9);
+Insert Into Experience Values (14, "Justin Jefferson", 23, 3);
+Insert Into Experience Values (15, "Dallas Goedert", 27, 5);
+Insert Into Experience Values (16, "A.J Brown", 25, 4);
+Insert Into Experience Values (17, "Jaylen Waddle", 24, 2);
+Insert Into Experience Values (18, "Tyreek Hill", 28, 7);
+Insert Into Experience Values (19, "Tee Higgins", 23, 3);
+Insert Into Experience Values (20, "Jeff Wilson", 27, 5);
+
 
 
 Select * From Athletes
