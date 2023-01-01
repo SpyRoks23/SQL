@@ -23,28 +23,29 @@ Insert Into Athletes Values (18, "Tyreek Hill", "Dolphins", "WR");
 Insert Into Athletes Values (19, "Tee Higgins", "Bengals", "WR");
 Insert Into Athletes Values (20, "Jeff Wilson", "Dolphins", "RB");
 
-Create Table Teammates (id Integer, Name Text, Team Text, Teammate_1 Text, Teammate_2 Text);
+Create Table Teammates (id INTEGER, Teammate_1 Integer, Teammate_2 Integer);
 
-Insert Into Teammates Values (1,"Patrick Mahomes", "Chiefs", "Travis Kelce", NULL);
-Insert Into Teammates Values (2, "Derrick Henry", "Titans", "Jeffrey Simmons", NULL);
-Insert Into Teammates Values (3, "Travis Kelce", "Chiefs", "Patrick Mahomes", NULL);
-Insert Into Teammates Values (4, "Jeffrey Simmons", "Titans", "Derrick Henry", NULL);
-Insert Into Teammates Values (5, "Cooper Kupp", "Rams", "Matthew Stafford", "Aaron Donald");
-Insert Into Teammates Values (6, "Matthew Stafford", "Rams", "Cooper Kupp", "Aaron Donald");
-Insert Into Teammates Values (7, "Joe Mixon", "Bengals", "Joe Burrow", "Tee Higgins");
-Insert Into Teammates Values (8, "Joe Burrow", "Bengals", "Joe Mixon", "Tee Higgins");
-Insert Into Teammates Values (9, "Jerry Jeudy", "Broncos", "Russell Wilson", NULL);
-Insert Into Teammates Values (10, "Russell Wilson", "Broncos", "Jerry Jeudy", NULL);
-Insert Into Teammates Values (11, "Nick Chubb", "Browns", "Amari Cooper", NULL);
-Insert Into Teammates Values (12, "Amari Cooper", "Browns", "Nick Chubb", NULL);
-Insert Into Teammates Values (13, "Aaron Donald", "Rams", "Matthew Stafford", "Cooper Kupp");
-Insert Into Teammates Values (14, "Justin Jefferson", "Vikings", NULL, NULL);
-Insert Into Teammates Values (15, "Dallas Goedert", "Eagles", "A.J Brown", NULL);
-Insert Into Teammates Values (16, "A.J Brown", "Eagles", "Dallas Goedert", NULL);
-Insert Into Teammates Values (17, "Jaylen Waddle", "Dolphins", "Tyreek Hill", "Jeff Wilson");
-Insert Into Teammates Values (18, "Tyreek Hill", "Dolphins", "Jaylen Waddle", "Jeff Wilson");
-Insert Into Teammates Values (19, "Tee Higgins", "Bengals", "Joe Burrow", "Joe Mixon");
-Insert Into Teammates Values (20, "Jeff Wilson", "Dolphins", "Tyreek Hill", "Jaylen Waddle");
+Insert Into Teammates Values (1, 3, Null);
+Insert Into Teammates Values (2, 4, Null);
+Insert Into Teammates Values (3, 1, Null);
+Insert Into Teammates Values (4, 2, Null);
+Insert Into Teammates Values (5, 6, 13);
+Insert Into Teammates Values (6, 5, 13);
+Insert Into Teammates Values (7, 8, 19);
+Insert Into Teammates Values (8, 7, 19);
+Insert Into Teammates Values (9, 10, Null);
+Insert Into Teammates Values (10, 9, Null);
+Insert Into Teammates Values (11, 12, Null);
+Insert Into Teammates Values (12, 11, Null);
+Insert Into Teammates Values (13, 5, 6);
+Insert Into Teammates Values (14, Null, Null);
+Insert Into Teammates Values (15, 16, Null);
+Insert Into Teammates Values (16, 15, Null);
+Insert Into Teammates Values (17, 18, 20);
+Insert Into Teammates Values (18, 17, 20);
+Insert Into Teammates Values (19, 7, 8);
+Insert Into Teammates Values (20, 17, 18);
+
 
 Create Table Experience (id Integer, Name Text, age Integer, years_pro Integer);
 
@@ -69,15 +70,40 @@ Insert Into Experience Values (18, "Tyreek Hill", 28, 7);
 Insert Into Experience Values (19, "Tee Higgins", 23, 3);
 Insert Into Experience Values (20, "Jeff Wilson", 27, 5);
 
---Display shows athlete's name, age, position, and years in the NFL
+--Display Shows athlete's name, age, position, and how many NFL years they've played
+
 Select ath.name, exp.age, ath.position, exp.years_pro 
 From Athletes as ath
 Join experience as exp
 On ath.id = exp.id
 Order by age;
 
+--Display Shows each player and their teammate(s) tables are linked together using a Left Join
 
-Select * From Athletes
-Order by team;
+Select i.name as Player, a.name as TM1, b.name as TM2
+From Teammates
+Left Join athletes i
+On i.id = teammates.id
+Left Join athletes a
+On a.id = teammates.teammate_1
+Left Join athletes b 
+On b.id = teammates.teammate_2;
 
-Select * From Teammates;
+-- Display Shows the sum of how many years pro each team has from their players linked by a Left Join
+
+Select athletes.team, sum(years_pro) as Total_NFL_Years
+From experience
+Left Join athletes
+on athletes.id = experience.id
+Group by athletes.team
+order by total_nfl_years;
+
+
+-- Display Shows the sum of how many years pro each position has from their players linked by a Left Join
+
+Select athletes.position, sum(years_pro) as Total_NFL_Years
+From experience
+Left Join athletes
+on athletes.id = experience.id
+Group by athletes.position
+order by total_nfl_years;
