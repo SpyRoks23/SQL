@@ -1,0 +1,66 @@
+--#1
+Select count(orderID)
+From BIT_DB.JanSales
+Where orderID <> ''
+AND orderID <> 'Order ID';
+
+--#2
+Select count(orderid)
+From BIT_DB.JanSales
+Where Product = 'iPhone'
+And orderID <> ''
+And orderID <> 'Order ID';
+
+--#3
+Select distinct acctnum
+From BIT_DB.customers 
+Inner Join BIT_DB.FebSales 
+ON BIT_DB.customers.order_id = BIT_DB.FebSales.orderID
+Where orderID <> ''
+And orderID <> 'Order ID';
+
+--#4 answer 1
+Select product, min(price)
+From BIT_DB.customers 
+Inner Join BIT_DB.JanSales 
+ON BIT_DB.customers.order_id = BIT_DB.JanSales.orderID
+Where orderID <> ''
+And orderID <> 'Order ID';
+
+-- #4 answer 2
+Select distinct product, price
+From BIT_DB.JanSales
+Where price in (Select min(price) From BIT_DB.JanSales);
+
+-- #4 answer 3
+Select distinct product, price
+From BIT_DB.JanSales
+Order by price ASC limit 1;
+
+-- #5 
+Select product, sum(quantity) * price as revenue
+From BIT_DB.JanSales
+Where product <> ''
+And product <> 'Product'
+Group by product
+order by revenue;
+
+-- #6 
+Select product, sum(quantity), sum(quantity) * price as revenue
+From BIT_DB.JanSales
+Where location = '548 Johnson St, Seattle, WA 98101'
+Group By product;
+
+
+--#7 
+Select 
+count(distinct cust.acctnum),
+avg(quantity*price)
+From BIT_DB.FebSales Feb 
+Left Join BIT_DB.customers cust
+On Feb.orderID = cust.order_id
+Where Feb.quantity > 2
+And order_id <> ''
+And order_id <> 'Order ID';
+
+
