@@ -67,3 +67,11 @@ avg(loudness) as loudness,
 avg(tempo) as tempo
 From Spotifydata
 Group by artist;
+
+--#7 Which songs have a popularity of at least 90, insturmentals greater than 0, and acoustics 
+-- greater than 0.1 and who are they by? 
+Select artist_name, track_name
+From spotifydata
+Where popularity > 89
+And instrumentalness > 0
+And acousticness > 0.1;
